@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
 
@@ -22,45 +22,32 @@
 
     <p>
 
-      Login : <input id="login" type="text" placeholder="Précisez votre Login" /> *
+      <label id="login"> Login : <input id="login" type="text" placeholder="Précisez votre Login" /> *
+
+    </p>
+
+  	<p>
+
+     <label id="mail"> Mail : <input id="mail" type="text" placeholder="ex: nomprenom@mail.com"/> *
+   	 <br>
+   	 <a href="#" id="retour">Retour au formulaire</a><br>
+
+    </p>
+
+ 
+    <p>
+
+     <label id="mdp"> Mot de passe : <input id="mdp" type="password"/> </div="mdp">
 
     </p>
 
     <p>
 
-      Nom : <input type="text" placeholder="Précisez votre nom" />
+    <label id="mdp2">  Confirmation de mot de passe : <input id="mdp2" type="password"/> *
 
     </p>
+    <a href="#" id="mdpOubli">Mot de passe oublié</a><br>
 
-    <p>
-
-      Prénom : <input type="text" placeholder="Précisez votre prénom" />
-
-    </p>
-
-    <p>
-
-      Mail : <input id="mail" type="text" placeholder="ex: nomprenom@mail.com"/> *
-
-    </p>
-
-    <p>
-
-      Site Web : <input id="website" type="text" placeholder="ex: www.nomdomaine.fr"/> *
-
-    </p>
-
-    <p>
-
-      Mot de passe : <input id="mdp" type="password"/> *
-
-    </p>
-
-    <p>
-
-      Confirmation de mot de passe : <input id="mdp2" type="password"/> *
-
-    </p>
 
     <p>
 
@@ -73,16 +60,53 @@
     
 
   </form>
+  <div id="erreur"> Erreur </div>
 
     <p>
 
-      <button type="submit" onclick="keyup">Valider l'inscription</button>
+      <button type="bouton">Valider l'inscription</button>
 
     </p>
 
 </body>
 
+<script>
+$(document).ready(function() {
+   $("#erreur").hide();
+   $("#mail").hide();
 
+   motpas = document.getElementById('mdp');
+
+   $("#bouton").click(function(){
+      if (motpas.validity.valid == false)
+      {
+         $("#erreur").show("fast");
+      }  
+      else
+      {
+         $("#formulaire").hide();
+      }
+      return false;
+   });
+
+   $("#mdpOubli").click(function(){
+   	$("#mdpOubli").hide();
+      $("#login").hide();
+      $("#mdp").hide();
+      $("#mdp2").hide();
+      $("#mail").show("fast");
+   });
+
+   $("#retour").click(function(){
+   	$("#mdpOubli").show();
+      $("#login").show();
+      $("#mdp").show();
+      $("#mdp2").show();
+      $("#mail").hide("fast");
+   });
+
+});
+</script>
 
 
 </html>
